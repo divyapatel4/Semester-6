@@ -1,0 +1,231 @@
+% \documentclass[aps,11pt,citeautoscript,reprint]{revtex4-1}
+\documentclass[aps,twocolumn,10pt,reprint]{revtex4}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epsf}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{subeqnarray}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=red, citecolor=blue, urlcolor=blue]{hyperref}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ben}{\begin{eqnarray}}
+\newcommand{\een}{\end{eqnarray}}
+
+\begin{document}
+
+\title{Lab -1}
+
+\author{Divya Patel (202001420)}\email{202001420@daiict.ac.in}
+\affiliation{Dhirubhai Ambani Institute of Information \& Communication Technology, Gandhinagar, Gujarat 382007, India\\ CS302, Modeling and Simulation}
+\author{Aryan Shah (202001430)}\email{202001430@daiict.ac.in}
+\affiliation{Dhirubhai Ambani Institute of Information \& Communication Technology, Gandhinagar, Gujarat 382007, India\\ CS302, Modeling and Simulation}
+
+% abstract should mention what is done in the lab and the key observation 
+\begin{abstract}
+
+In this lab we numerically and analytically analyze the growth of IBM over time. We also have modeled the growth of IBM using logistic equations. Our main observations are that.....   
+
+\end{abstract}
+\maketitle
+% Introduction should give a brief background of the problem in your own words. Any references used should be cited
+\section{Introduction}
+The analysis of IBM's annual revenue generation, net annual earnings, and cumulative human resource strength dating back to 1914, provides a wealth of information that can be used to better understand the development and success of one of the world's leading technology companies. This data can be used to answer various research questions that can have theoretical and practical implications.
+
+From a theoretical perspective, the analysis of IBM's data can provide insights into the factors that influence the growth and performance of technology companies. For example, by examining the relationship between IBM's revenue generation and net earnings, researchers can understand the drivers of financial success in the technology industry.
+
+From a practical perspective, the analysis of IBM's data can provide valuable information to stakeholders, including investors, policy makers, and business leaders. For example, by examining IBM's financial performance over time, investors can make informed decisions about the company's stock and assess its future potential. 
+
+In addition, analyzing IBM's data in the context of other technology companies can provide a broader perspective on the industry as a whole. By comparing IBM's performance to that of its peers, researchers can identify common trends and patterns and unique challenges and opportunities faced by IBM over the past century.
+
+
+\section{Model}
+
+\subsection{Non-Linear Model for Growth}
+
+The study of industrial growth is crucial for understanding the dynamics of the economy. In a preceding work [4], the authors have emphasized the significance of utilizing differential equations of varying complexity for the study of industrial growth.
+
+One of the models used to describe the growth of industrial production is the logistic equation, which is widely used to model population growth. In this model, the growth rate slows down as the size of the population increases, leading to saturation in growth.
+
+In this study, a generalized form of the logistic equation is proposed to analyze the growth of industrial production over time. 
+
+This equation, represented as follows:\\ 
+\be\label{Eq:Logistic}
+\phi(t) = \lambda \phi (1 - \eta \phi^{\alpha}) 
+\ee 
+This allows for arbitrary nonlinearity, making it a powerful tool for studying industrial growth.
+
+The variable \phi represents any relevant variable such as revenue or human resource strength, while \lambda and \eta are parameters that control the growth rate and the saturation level, respectively. The variable \alpha represents the degree of non-linearity in the model.
+
+Integrating this equation yields the following solution:
+\be\label{Eq:LogisticSol}
+\phi(t) = [\eta + c^{- \alpha}exp(-\alpha \lambda t)]^{-1/\alpha}
+\ee
+
+
+\subsection{Dynamic Systems Modeling}
+
+The growth rate of any variable will have a correlation with the growth rate of other variables. For example, revenue growth rate will be correlated with the growth rate of human resource strength. In this study, we propose a dynamic systems model to analyze the growth of industrial production over time.
+For general revenue variable R, it is assumed that revenue growth rate is coupled with the growth rate of human resource strength. This is represented by equation \dot{R} = \rho(R,H) and \dot{H} = \sigma(R,H).
+\\
+
+We can describe uncoupled growth of revenue and human resource strength by the following equations: 
+\be\label{Eq:Uncoupled}
+\begin{split}
+\dot{R} &= \lambda_r R (1-\eta_r R^{\alpha_r}) \\
+\dot{H} &= \lambda_h H (1-\eta_h H^{\alpha_h})
+\end{split}
+\ee
+The integral solution can be transformed into the following form as v = ku^{\beta}, \quad \text{where} \quad v = R^{-\alpha_r} - \eta_r, \quad u= H^{-\alpha_h} - \eta_h, \quad \beta = \frac{\alpha_r}{\alpha_h} \frac{\lambda_r}{\lambda_h} \quad \text{and} \quad k \text{is a constant.}
+
+
+\pagebreak
+
+\section{Results}
+
+
+% insert plot1.png and give a caption
+
+Fig.~\ref{Fig:image1f} The lower curve in figure 1 gives the model for the annual revenue generated by IBM.And the upper curve gives the cumulative growth of the annual revenue generated by IBM.And we also can see that how well our model fit with the actual data in both cases.
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 3.50 in]{Plot1.png}~
+% \caption{The theoretical model agrees for $\alpha=1$,  $\lambda=0.147$ and $\eta=7x10^-5$. The fit for the cumulative growth curve is given by $\eta=4 \cdot10^-7$.}\label{Fig:image1f}
+% Optimal parameters: ALPHA = 1.000001278153164, LAMDA = 0.14475761172582866, N = 1.0608003470968498e-05, C = 2.499998318877081
+\caption{The lower curve represents modelled annual revenue generated by IBM and the upper curve represents cumulative growth of annual revenue generated by IBM. The theoretical model gives a good fit for $\alpha=1$, $\lambda=0.147$ and $\eta=2.21\cdot10^-5$. The fit for the cumulative growth curve is given by $\eta=7.2 \cdot10^-7$.}\label{Fig:image1f} 
+\end{figure}
+
+% insert plot2.png and give a caption
+% This plot is about Human Resource strength of IBM. We can see that how logistically the human resource strength of IBM is growing over the years. 
+Fig.~\ref{Fig:image2f} This plot is about Human Resource strength of IBM. We can see that how logistically the human resource strength of IBM is growing over the years.
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 3.50 in]{Plot2.png}~
+%\justifying
+\caption{ We can observe that there was a significant human resource depletion at t = 75(75 years after the existence of IBM) and continued deteriorating for next few years and after that company started to grow again.}\label{Fig:image2f}
+\end{figure}
+
+% insert plot3.png and give a caption
+% This plot is about profit of IBM over the years. We can see how profit is growing over the years and at t = 80(80 years after the existence of IBM) company suffered major loss after which company started to grow again but seems to be saturated now. 
+Fig.~\ref{Fig:image3f} This plot is about profit of IBM over the years. 
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 3.50 in]{Plot3.png}~
+\caption{We can see how profit is growing over the years and at t = 80(80 years after the existence of IBM) company suffered major loss after which company started to grow again but seems to be saturated now.}\label{Fig:image3f}
+\end{figure}
+
+% insert plot4.png and give a caption [u-v plot] plot between human resource strength and revenue of IBM over the years. We can see that how revenue is growing with the growth of human resource strength of IBM. 
+Fig.~\ref{Fig:image4f} [u-v plot] plot between human resource strength and revenue of IBM over the years. We can see that how revenue is growing with the growth of human resource strength of IBM. We can infer from results obtained till now that there is is a positive correlation between revenue and human resource strength of IBM. After t = 80(80 years after the existence of IBM) company suffered major loss which was the same time when human resource strength of IBM also started to decrease.
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 3.50 in]{Plot4.png}~
+% ALPHA_h = 1; ALPHA_r = 1; LAMDA_h = 0.09; LAMDA_r = 0.09; N_h = 2e-6; N_r = 5e-6;
+
+\caption{The theoretical model agrees for $\alpha_{h}=1$, $\alpha_{r}=1$, $\lambda_{h}=0.09$, $\lambda_{r}=0.09$, $n_{h}=2 \cdot10^{-6}$ and $n_{r}=5 \cdot10^{-6}$. We can observe that u and v are showing linear growth after passing a certain point and we can model this growth by a straight line.}\label{Fig:image4f}
+\end{figure}
+
+
+
+\newpage
+
+\section{STATISTICS}
+\subsection{Annual Revenue}
+% Relative Error : 33.10180919018642
+% Mean Relative Error : 0.3559334321525422
+% SD of Relative Error : 0.611011023418275
+\renewcommand{\arraystretch}{2.5}
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c | c|}
+\hline
+Total Relative Error ($\sum\frac{y_{data} - y_{modelled}}{y_{data}}$) & 33.10 \\
+\hline
+Mean Relative Error ($\frac{\text{Relative Error}}{\text{n}}$) & 0.356 \\
+\hline
+SD of Relative Error ($\sqrt{\frac{\sum_{i=1}^{n} (y_{data} - y_{modelled})^2}{n}}$) & 0.611 \\
+\hline 
+\end{tabular}
+\caption{Statistics of Net Annual Revenue}
+\label{table:statistics}
+\end{table}
+
+% Relative Error : 7.561508882723964
+% Mean Relative Error : 0.08130654712606412
+% SD of Relative Error : 0.25862453892840864
+\renewcommand{\arraystretch}{2.5}
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c | c|}
+\hline
+Total Relative Error ($\sum \frac{y_{data} - y_{modelled}}{y_{data}}$) & 7.562 \\
+\hline
+Mean Relative Error ($\frac{\text{Total Relative Error}}{\text{n}}$) & 0.081 \\ 
+\hline
+SD of Relative Error ($\sqrt{\frac{\sum_{i=1}^{n} (y_{data} - y_{modelled})^2}{n}}$) & 0.259 \\
+\hline
+\end{tabular}
+\caption{Statistics of cumulative annual revenue}
+\label{table:statistics2}
+\end{table}
+
+
+
+
+
+
+
+
+\subsection{Human Resource Count}
+% Relative Error : -1.5105343127527326
+% mean Relative Error : -0.016242304438201426
+% SD of Relative Error : 0.2654697720614238
+\renewcommand{\arraystretch}{2.5}
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c | c|}
+\hline
+Total Relative Error ($\sum \frac{|y_{data} - y_{modelled}|}{y_{data}}$) & -1.511 \\
+\hline
+Mean Relative Error ($\frac{\text{Total Relative Error}}{\text{n}}$) & -0.016 \\
+\hline
+SD of Relative Error ($\sqrt{\frac{\sum_{i=1}^{n} (y_{data} - y_{modelled})^2}{n}}$) & 0.265 \\
+\hline
+\end{tabular}
+\caption{Statistics of Human Resource Count}
+\label{table:statistics}
+\end{table}
+
+
+
+By looking at the error statistics we can say that our model is very accurate and can be used to predict the future values of revenue and human resource count of IBM with a very small error. 
+
+\section{Conclusions}
+
+The logistic equation effectively captures the relationship between revenue and human resources for IBM. The model fit is indicated by the low error statistics.
+
+\begin{itemize}
+
+\item The relationship between revenue and human resources can be visualized as a sigmoidal curve, with the rate of increase in revenue slowing as the number of human resources approaches its maximum carrying capacity.
+\\
+\item The logistic equation parameters provide valuable insights into the nature of the relationship between revenue and human resources. The growth rate and carrying capacity parameters can be used to make predictions about future revenue growth for a given number of human resources.
+\\
+\item The results of this modeling exercise suggest that there may be a limit to the amount of revenue that can be generated for a given number of human resources. This highlights the importance of efficiently utilizing available resources to maximize revenue.
+
+\end{itemize}
+In conclusion, the logistic equation provides a valuable tool for modeling the relationship between revenue and human resources, and can be used to inform decisions related to resource allocation and business strategy.
+
+
+
+
+\end{document}
