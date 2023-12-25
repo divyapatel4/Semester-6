@@ -1,0 +1,5 @@
+prob = [2**i for i in range(4, 11)]
+
+## warning, don't remove 0, main.py doesn't rectify
+# procs = [0,2,4,8,12,16]
+procs = [0,2,4,8]
